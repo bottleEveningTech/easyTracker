@@ -1,4 +1,4 @@
-import { Component, computed, EventEmitter, Input, input, Output} from '@angular/core';
+import { Component, computed, EventEmitter, Input, input, Output, output} from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 @Component({
@@ -12,7 +12,9 @@ export class User {
   @Input({required: true}) avatar!: string;
   @Input({required: true}) name!: string;
 
-  @Output() select = new EventEmitter();
+  @Output() select = new EventEmitter<string>(); //let ang/ts no type of value to be emitted
+
+  // selectSignal = output<string>(); //does not create a signal unlike input(), it only gives custom event that we can emit
   // avatar = input.required<string>();
   // name = input.required<string>();
 
@@ -24,5 +26,6 @@ export class User {
   }
   onSelectUser(){
     this.select.emit(this.id);
+    // this.selectSignal.emit(this.id)
     }
 }
