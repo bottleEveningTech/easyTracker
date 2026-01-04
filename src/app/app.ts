@@ -14,4 +14,8 @@ import { DUMMY_USERS } from './dummy-users';
 export class App {
   protected readonly title = signal('sharpenUp-Angular');
   users = DUMMY_USERS;
+
+  onSelectUser(id: string){
+    console.log(id);
+  }
 }
