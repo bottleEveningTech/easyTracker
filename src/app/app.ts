@@ -18,7 +18,7 @@ export class App {
   selectedUserId = 'u1';
 
   get selectedUser(){
-    return this.users.find(x => x.id === this.selectedUserId)!; //find is of JS, ! is convincing TS that this val will never be undefined
+    return this.users.find(x => x.id === this.selectedUserId); //find is of JS, ! is convincing TS that this val will never be undefined
   }
 
   onSelectUser(id: string){

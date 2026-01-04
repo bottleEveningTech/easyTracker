@@ -8,10 +8,15 @@ import { DUMMY_USERS } from '../dummy-users';
   styleUrl: './user.css',
 })
 export class User {
-  @Input({required: true}) id!: string;
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
+  // @Input({required: true}) id!: string;
+  // @Input({required: true}) avatar!: string;
+  // @Input({required: true}) name!: string;
 
+  @Input({required: true}) user!: {
+    id: string;
+    name: string;
+    avatar:string
+  };
   @Output() select = new EventEmitter<string>(); //let ang/ts no type of value to be emitted
 
   // selectSignal = output<string>(); //does not create a signal unlike input(), it only gives custom event that we can emit
@@ -22,10 +27,10 @@ export class User {
   //   return 'assets/users/' + this.avatar();
   // })
   get imagePath(){
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
   onSelectUser(){
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
     // this.selectSignal.emit(this.id)
     }
 }

@@ -8,5 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class Tasks {
 
-  @Input()userName?: string;
+  // @Input()userName?: string; 
+  @Input() userName: string | undefined; //alternative
+
 }
