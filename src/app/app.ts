@@ -15,7 +15,7 @@ import { Tasks } from "./tasks/tasks";
 export class App {
   protected readonly title = signal('sharpenUp-Angular');
   users = DUMMY_USERS;
-  selectedUserId = 'u1';
+  selectedUserId?: string;
 
   get selectedUser(){
     return this.users.find(x => x.id === this.selectedUserId); //find is of JS, ! is convincing TS that this val will never be undefined

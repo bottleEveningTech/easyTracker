@@ -1,5 +1,18 @@
-import { Component, computed, EventEmitter, Input, input, Output, output} from '@angular/core';
+import { Component, computed, EventEmitter, Input, input, Output, output } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
+
+// type UserType = {
+//   id: string;
+//   name: string;
+//   avatar: string
+// };
+
+//interface defines only object types
+interface UserType { 
+  id: string;
+  name: string;
+  avatar:string;
+}
 
 @Component({
   selector: 'app-user',
@@ -12,11 +25,7 @@ export class User {
   // @Input({required: true}) avatar!: string;
   // @Input({required: true}) name!: string;
 
-  @Input({required: true}) user!: {
-    id: string;
-    name: string;
-    avatar:string
-  };
+  @Input({ required: true }) user!: UserType;
   @Output() select = new EventEmitter<string>(); //let ang/ts no type of value to be emitted
 
   // selectSignal = output<string>(); //does not create a signal unlike input(), it only gives custom event that we can emit
@@ -26,11 +35,11 @@ export class User {
   // imagePath = computed(()=> {
   //   return 'assets/users/' + this.avatar();
   // })
-  get imagePath(){
+  get imagePath() {
     return 'assets/users/' + this.user.avatar;
   }
-  onSelectUser(){
+  onSelectUser() {
     this.select.emit(this.user.id);
     // this.selectSignal.emit(this.id)
-    }
+  }
 }
