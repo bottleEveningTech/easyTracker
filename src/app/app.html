@@ -6,14 +6,14 @@
     </li> -->
     @for (user of users; track user.id) {
     <li>
-      <app-user [user]="user" (select)="onSelectUser($event)" />
+      <app-user [user]="user" (select)="onSelectUser($event)" [isSelected]="user.id === selectedUserId" />
     </li>
     }
   </ul>
   <!-- <app-tasks [userName]="selectedUser?.name"></app-tasks> -->
   <!-- If selected user exists, access name, else use undefined as a fallback -->
    @if(selectedUser){
-  <app-tasks [userName]="selectedUser.name"></app-tasks>
+  <app-tasks [userId]="selectedUser.id" [userName]="selectedUser.name"></app-tasks>
   }
   @else {
     <p id= "fallback">Select a user to see their tasks!</p>
