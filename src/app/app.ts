@@ -1,18 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "./header/header";
-import { User } from "./user/user";
 import { DUMMY_USERS } from './dummy-users';
-import { Tasks } from "./tasks/tasks";
-import { NgFor, NgIf} from '@angular/common';
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, HeaderComponent, User, Tasks, NgFor, NgIf],
+  standalone: false,
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class AppComponent {
   protected readonly title = signal('sharpenUp-Angular');
   users = DUMMY_USERS;
   selectedUserId?: string;
